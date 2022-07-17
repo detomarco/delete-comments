@@ -1,0 +1,22 @@
+name: 'Delete comment'
+author: 'Marco De Toma'
+description: 'Delete issue or pull request comment'
+inputs:
+  token:
+    required: true
+    description: 'GITHUB_TOKEN or a repo scoped PAT.'
+    default: ${{ secrets.GITHUB_TOKEN }}
+  repository:
+    required: true
+    description: 'The full name of the repository containing the issue or pull request.'
+    default: ${{ github.repository }}
+  comment-id:
+    required: true
+    description: 'The comment id to delete.'
+outputs:
+  done:
+    description: 'true when the action is done'
+
+runs:
+  using: 'node16'
+  main: 'dist/index.js'
