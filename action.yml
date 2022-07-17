@@ -1,6 +1,6 @@
 name: 'Delete comment'
 author: 'Marco De Toma'
-description: 'Delete issue comment'
+description: 'Delete issue or pull request comment'
 inputs:
   token:
     required: true
@@ -10,17 +10,12 @@ inputs:
     required: true
     description: 'The full name of the repository containing the issue or pull request.'
     default: ${{ github.repository }}
-  issue-number:
-    required: true
-    description: 'The number of the issue or pull request in which to search.'
   comment-id:
     required: true
     description: 'The comment id to delete.'
 outputs:
-  found:
-    description: 'True if the comment id was found, false otherwise'
-  comment-content:
-    description: 'The content of the comment that has been removed.'
+  done:
+    description: 'true when the action is done'
 
 runs:
   using: 'node16'

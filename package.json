@@ -24,19 +24,19 @@
   "author": "Marco De Toma",
   "license": "MIT",
   "dependencies": {
-    "@actions/core": "^1.6.0"
+    "@actions/core": "^1.9.0",
+    "@octokit/rest": "^19.0.3"
   },
   "devDependencies": {
-    "@types/node": "^16.10.5",
-    "@typescript-eslint/parser": "^5.8.1",
-    "@vercel/ncc": "^0.31.1",
-    "eslint": "^7.32.0",
-    "eslint-plugin-github": "^4.3.2",
-    "eslint-plugin-jest": "^25.3.2",
-    "jest": "^27.2.5",
+    "@octokit/types": "^6.40.0",
+    "@types/node": "^18.0.5",
+    "@typescript-eslint/parser": "^5.30.6",
+    "@vercel/ncc": "^0.34.0",
+    "eslint": "^8.20.0",
+    "eslint-plugin-github": "^4.3.6",
+    "eslint-plugin-jest": "^26.6.0",
     "js-yaml": "^4.1.0",
-    "prettier": "2.5.1",
-    "ts-jest": "^27.1.2",
-    "typescript": "^4.4.4"
+    "prettier": "2.7.1",
+    "typescript": "^4.7.4"
   }
 }
