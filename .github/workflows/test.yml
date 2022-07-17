@@ -18,17 +18,17 @@ jobs:
 
       - name: build
         run: |
-          npm build
+          npm run build
 
       - name: format-check
         run: |
-          npm format-check
+          npm run format-check
 
       - name: lint
         run: |
-          npm lint
+          npm run lint
 
       - name: package
         run: |
-          npm package
+          npm run package
 
