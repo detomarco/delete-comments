@@ -1,0 +1,26 @@
+name: 'Find Comment'
+description: 'Find an issue or pull request comment'
+inputs:
+  token:
+    required: true
+    description: 'GITHUB_TOKEN or a repo scoped PAT.'
+    default: ${{ github.token }}
+  repository:
+    required: true
+    description: 'The full name of the repository containing the issue or pull request.'
+    default: ${{ github.repository }}
+  issue-number:
+    required: true
+    description: 'The number of the issue or pull request in which to search.'
+  comment-id:
+    required: true
+    description: 'The comment id to delete.'
+outputs:
+  found:
+    description: 'True if the comment id was found, false otherwise'
+  comment-content:
+    description: 'The content of the comment that has been removed.'
+
+runs:
+  using: 'node16'
+  main: 'dist/index.js'
