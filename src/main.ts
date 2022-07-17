@@ -1,7 +1,7 @@
 import * as core from '@actions/core'
 import {inspect} from 'util'
-import github from "@actions/github";
-import {OctokitResponse} from "@octokit/types";
+import github from '@actions/github'
+import {OctokitResponse} from '@octokit/types'
 
 interface Inputs {
     token: string
@@ -9,7 +9,9 @@ interface Inputs {
     commentId: number
 }
 
-async function deleteComment(inputs: Inputs): Promise<OctokitResponse<never, 204>> {
+async function deleteComment(
+    inputs: Inputs
+): Promise<OctokitResponse<never, 204>> {
     const octokit = github.getOctokit(inputs.token)
     const [owner, repo] = inputs.repository.split('/')
 
@@ -21,7 +23,6 @@ async function deleteComment(inputs: Inputs): Promise<OctokitResponse<never, 204
 }
 
 async function run(): Promise<void> {
-
     try {
         const inputs: Inputs = {
             token: core.getInput('token'),
@@ -32,7 +33,6 @@ async function run(): Promise<void> {
 
         await deleteComment(inputs)
         core.setOutput('done', true)
-
     } catch (error: any) {
         core.debug(inspect(error))
         core.setFailed(error.message)
