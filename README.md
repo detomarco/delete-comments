@@ -28,7 +28,7 @@ A GitHub action to delete an issue or pull request comment.
 
 | Name | Description |
 | --- | --- |
-| `done` | true when completed successfully |
+| `done` | `true` when the comment is found and deleted, `false` otherwise |
 
 ### Where to find the id of a comment
 I recommend this github action [Find Comment](https://github.com/peter-evans/find-comment)
