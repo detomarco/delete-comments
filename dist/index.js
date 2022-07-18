@@ -36,20 +36,26 @@ const github_1 = __nccwpck_require__(5438);
 async function deleteComment(inputs) {
     const octokit = (0, github_1.getOctokit)(inputs.token);
     const [owner, repo] = inputs.repository.split('/');
-    return await octokit.rest.issues.deleteComment({
+    const body = {
         owner,
         repo,
         comment_id: inputs.commentId
-    });
+    };
+    core.info(`Calling delete comment ${(0, util_1.inspect)(body)}`);
+    return octokit.rest.issues
+        .deleteComment(body)
+        .then(() => true)
+        .catch(() => false);
 }
 async function run() {
+    core.info(`Start delete comments`);
     try {
         const inputs = {
             token: core.getInput('token'),
             repository: core.getInput('repository'),
             commentId: Number(core.getInput('comment-id'))
         };
-        core.debug(`Inputs: ${(0, util_1.inspect)(inputs)}`);
+        core.info(`Inputs: ${(0, util_1.inspect)(inputs)}`);
         await deleteComment(inputs);
         core.setOutput('done', true);
     }
