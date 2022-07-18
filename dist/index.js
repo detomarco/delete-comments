@@ -29,15 +29,12 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 const core = __importStar(__nccwpck_require__(2186));
 const util_1 = __nccwpck_require__(3837);
-const github_1 = __importDefault(__nccwpck_require__(5438));
+const github_1 = __nccwpck_require__(5438);
 async function deleteComment(inputs) {
-    const octokit = github_1.default.getOctokit(inputs.token);
+    const octokit = (0, github_1.getOctokit)(inputs.token);
     const [owner, repo] = inputs.repository.split('/');
     return await octokit.rest.issues.deleteComment({
         owner,

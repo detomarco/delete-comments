@@ -5,6 +5,7 @@
   "description": "Delete comments action",
   "main": "lib/main.js",
   "scripts": {
+    "start": "node dist/index.js",
     "build": "tsc",
     "format": "prettier --write '**/*.ts'",
     "format-check": "prettier --check '**/*.ts'",

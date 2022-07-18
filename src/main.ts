@@ -1,6 +1,6 @@
 import * as core from '@actions/core'
 import {inspect} from 'util'
-import github from '@actions/github'
+import {getOctokit} from '@actions/github'
 import {OctokitResponse} from '@octokit/types'
 
 interface Inputs {
@@ -12,7 +12,7 @@ interface Inputs {
 async function deleteComment(
     inputs: Inputs
 ): Promise<OctokitResponse<never, 204>> {
-    const octokit = github.getOctokit(inputs.token)
+    const octokit = getOctokit(inputs.token)
     const [owner, repo] = inputs.repository.split('/')
 
     return await octokit.rest.issues.deleteComment({
