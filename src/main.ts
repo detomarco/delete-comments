@@ -34,8 +34,8 @@ async function run(): Promise<void> {
             commentId: Number(core.getInput('comment-id'))
         }
         core.info(`Inputs: ${inspect(inputs)}`)
-        await deleteComment(inputs)
-        core.setOutput('done', true)
+        const result = await deleteComment(inputs)
+        core.setOutput('done', result)
     } catch (error: any) {
         core.debug(inspect(error))
         core.setFailed(error.message)

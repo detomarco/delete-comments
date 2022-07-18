@@ -56,8 +56,8 @@ async function run() {
             commentId: Number(core.getInput('comment-id'))
         };
         core.info(`Inputs: ${(0, util_1.inspect)(inputs)}`);
-        await deleteComment(inputs);
-        core.setOutput('done', true);
+        const result = await deleteComment(inputs);
+        core.setOutput('done', result);
     }
     catch (error) {
         core.debug((0, util_1.inspect)(error));
