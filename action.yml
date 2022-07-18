@@ -1,4 +1,4 @@
-name: 'Delete comment'
+name: 'Delete comments'
 author: 'Marco De Toma'
 description: 'Delete issue or pull request comment'
 inputs:
