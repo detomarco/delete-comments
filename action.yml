@@ -17,6 +17,10 @@ outputs:
   done:
     description: 'true when the action is done'
 
+branding:
+  color: blue
+  icon: delete
+
 runs:
   using: 'node16'
   main: 'dist/index.js'
