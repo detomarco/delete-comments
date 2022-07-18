@@ -1,0 +1,40 @@
+
+name: Add tag
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: name
+  cancel-in-progress: false
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
+jobs:
+  add-tag:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Push new tag
+        id: pushtag
+        # v1.38.0 does not work (see issue https://github.com/anothrNick/github-tag-action/issues/135)
+        uses: anothrNick/github-tag-action@1.36.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          WITH_V: true
+          DEFAULT_BUMP: PATCH
+          PRERELEASE_SUFFIX: PR${{github.event.number}}
+
+      - name: Print new tag
+        run: echo ${{ steps.pushtag.outputs.new_tag }}
