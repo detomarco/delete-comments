@@ -41,8 +41,11 @@ async function deleteComment(inputs) {
         repo,
         comment_id: inputs.commentId
     };
-    core.info(`Calling delete comment ${body}`);
-    return await octokit.rest.issues.deleteComment(body);
+    core.info(`Calling delete comment ${(0, util_1.inspect)(body)}`);
+    return octokit.rest.issues
+        .deleteComment(body)
+        .then(() => true)
+        .catch(() => false);
 }
 async function run() {
     core.info(`Start delete comments`);
