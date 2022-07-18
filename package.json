@@ -1,8 +1,8 @@
 {
-  "name": "delete-comment",
+  "name": "delete-comments",
   "version": "0.0.1",
   "private": false,
-  "description": "Delete comment action",
+  "description": "Delete comments action",
   "main": "lib/main.js",
   "scripts": {
     "build": "tsc",
