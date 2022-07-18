@@ -49,20 +49,14 @@ async function deleteComment(inputs) {
 }
 async function run() {
     core.info(`Start delete comments`);
-    try {
-        const inputs = {
-            token: core.getInput('token'),
-            repository: core.getInput('repository'),
-            commentId: Number(core.getInput('comment-id'))
-        };
-        core.info(`Inputs: ${(0, util_1.inspect)(inputs)}`);
-        const result = await deleteComment(inputs);
-        core.setOutput('done', result);
-    }
-    catch (error) {
-        core.debug((0, util_1.inspect)(error));
-        core.setFailed(error.message);
-    }
+    const inputs = {
+        token: core.getInput('token'),
+        repository: core.getInput('repository'),
+        commentId: Number(core.getInput('comment-id'))
+    };
+    core.info(`Inputs: ${(0, util_1.inspect)(inputs)}`);
+    const result = await deleteComment(inputs);
+    core.setOutput('done', result);
 }
 run();
 

@@ -27,19 +27,14 @@ async function deleteComment(inputs: Inputs): Promise<boolean> {
 
 async function run(): Promise<void> {
     core.info(`Start delete comments`)
-    try {
-        const inputs: Inputs = {
-            token: core.getInput('token'),
-            repository: core.getInput('repository'),
-            commentId: Number(core.getInput('comment-id'))
-        }
-        core.info(`Inputs: ${inspect(inputs)}`)
-        const result = await deleteComment(inputs)
-        core.setOutput('done', result)
-    } catch (error: any) {
-        core.debug(inspect(error))
-        core.setFailed(error.message)
+    const inputs: Inputs = {
+        token: core.getInput('token'),
+        repository: core.getInput('repository'),
+        commentId: Number(core.getInput('comment-id'))
     }
+    core.info(`Inputs: ${inspect(inputs)}`)
+    const result = await deleteComment(inputs)
+    core.setOutput('done', result)
 }
 
 run()
