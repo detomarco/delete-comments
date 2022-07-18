@@ -6,6 +6,11 @@ on:
   push:
     branches:
       - main
+
+concurrency:
+  group: name
+  cancel-in-progress: false
+
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
