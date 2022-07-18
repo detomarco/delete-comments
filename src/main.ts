@@ -14,22 +14,24 @@ async function deleteComment(
 ): Promise<OctokitResponse<never, 204>> {
     const octokit = getOctokit(inputs.token)
     const [owner, repo] = inputs.repository.split('/')
-
-    return await octokit.rest.issues.deleteComment({
+    const body = {
         owner,
         repo,
         comment_id: inputs.commentId
-    })
+    }
+    core.info(`Calling delete comment ${body}`)
+    return await octokit.rest.issues.deleteComment(body)
 }
 
 async function run(): Promise<void> {
+    core.info(`Start delete comments`)
     try {
         const inputs: Inputs = {
             token: core.getInput('token'),
             repository: core.getInput('repository'),
             commentId: Number(core.getInput('comment-id'))
         }
-        core.debug(`Inputs: ${inspect(inputs)}`)
+        core.info(`Inputs: ${inspect(inputs)}`)
 
         await deleteComment(inputs)
         core.setOutput('done', true)
