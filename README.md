@@ -1,7 +1,9 @@
 # Delete Comments
 [![CodeQL](https://github.com/detomarco/delete-comment/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/detomarco/delete-comment/actions/workflows/codeql-analysis.yml)
 
-A GitHub action to delete an issue or pull request comment.
+A GitHub action to delete an issue or pull request comments.
+
+**NB: this action can only delete a comment by id at the moment. Feel free to open an issue or pull request if you would like to delete comments based on other criterias**
 
 ## Usage
 
