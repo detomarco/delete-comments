@@ -8,7 +8,7 @@ on:
       - main
 
 concurrency:
-  group: name
+  group: auto-tag
   cancel-in-progress: false
 
 env:
