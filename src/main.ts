@@ -9,7 +9,6 @@ interface Inputs {
 }
 
 async function deleteComment(inputs: Inputs): Promise<boolean> {
-    const octokit = getOctokit(inputs.token)
     const [owner, repo] = inputs.repository.split('/')
 
     const body = {
@@ -17,8 +16,9 @@ async function deleteComment(inputs: Inputs): Promise<boolean> {
         repo,
         comment_id: inputs.commentId
     }
-    core.info(`Calling delete comment ${inspect(body)}`)
+    core.debug(`Calling delete comment ${inspect(body)}`)
 
+    const octokit = getOctokit(inputs.token)
     return octokit.rest.issues
         .deleteComment(body)
         .then(() => true)
@@ -26,13 +26,13 @@ async function deleteComment(inputs: Inputs): Promise<boolean> {
 }
 
 async function run(): Promise<void> {
-    core.info(`Start delete comments`)
+    core.debug(`Start delete comments`)
     const inputs: Inputs = {
         token: core.getInput('token'),
         repository: core.getInput('repository'),
         commentId: Number(core.getInput('comment-id'))
     }
-    core.info(`Inputs: ${inspect(inputs)}`)
+    core.debug(`Inputs: ${inspect(inputs)}`)
     const result = await deleteComment(inputs)
     core.setOutput('done', result)
 }
