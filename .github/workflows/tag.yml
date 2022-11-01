@@ -30,7 +30,7 @@ jobs:
       - name: Push new tag
         id: pushtag
         # v1.38.0 does not work (see issue https://github.com/anothrNick/github-tag-action/issues/135)
-        uses: anothrNick/github-tag-action@1.40.0
+        uses: anothrNick/github-tag-action@1.52.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           WITH_V: true
